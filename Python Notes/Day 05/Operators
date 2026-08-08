@@ -1,0 +1,665 @@
+# Python Day 05 — Operators
+
+## 1. What is an Operator?
+
+An **operator** is a symbol or keyword used to perform an operation on one or more values/variables.
+
+```python
+a = 10
+b = 20
+
+print(a + b)   # 30
+```
+
+Here:
+
+* `+` → Operator
+* `10`, `20` → Operands
+
+## Types of Operators
+
+Python has:
+
+1. Arithmetic
+2. Assignment
+3. Comparison / Relational
+4. Logical
+5. Bitwise
+6. Membership
+7. Identity
+8. Conditional / Ternary
+
+---
+
+# 2. Arithmetic Operators
+
+Used for mathematical calculations.
+
+| Operator | Meaning        | Example   |     Result |
+| -------- | -------------- | --------- | ---------: |
+| `+`      | Addition       | `10 + 5`  |       `15` |
+| `-`      | Subtraction    | `10 - 5`  |        `5` |
+| `*`      | Multiplication | `10 * 5`  |       `50` |
+| `/`      | Division       | `10 / 3`  | `3.333...` |
+| `//`     | Floor Division | `10 // 3` |        `3` |
+| `%`      | Remainder      | `10 % 3`  |        `1` |
+| `**`     | Power          | `10 ** 2` |      `100` |
+
+### `/` Division
+
+Returns the quotient as a **float**.
+
+```python
+print(10 / 2)      # 5.0
+print(153 / 10)    # 15.3
+```
+
+Example: calculating average marks.
+
+```python
+total = 450
+subjects = 5
+print(total / subjects)   # 90.0
+```
+
+### `//` Floor Division
+
+Returns the quotient after removing the fractional part.
+
+```python
+print(153 // 10)    # 15
+```
+
+Example:
+
+```python
+apples = 53
+capacity = 10
+
+print(apples // capacity)   # 5
+```
+
+So, 5 complete boxes can be filled.
+
+### `%` Modulus
+
+Returns the **remainder**.
+
+```python
+print(10 % 3)     # 1
+print(123 % 10)   # 3
+```
+
+Useful for checking even/odd:
+
+```python
+number = 18
+print(number % 2)   # 0
+```
+
+Remainder `0` → even number.
+
+### `**` Exponent
+
+Raises a number to a power.
+
+```python
+print(2 ** 5)    # 32
+```
+
+Example:
+
+```python
+side = 8
+print(side ** 2)    # 64
+```
+
+---
+
+# 3. Assignment Operators
+
+Used to assign or update variable values.
+
+| Operator | Meaning               | Equivalent   |
+| -------- | --------------------- | ------------ |
+| `=`      | Assign                | `x = 5`      |
+| `+=`     | Add & assign          | `x = x + 3`  |
+| `-=`     | Subtract & assign     | `x = x - 2`  |
+| `*=`     | Multiply & assign     | `x = x * 4`  |
+| `/=`     | Divide & assign       | `x = x / 2`  |
+| `//=`    | Floor divide & assign | `x = x // 3` |
+| `%=`     | Modulus & assign      | `x = x % 2`  |
+| `**=`    | Power & assign        | `x = x ** 3` |
+
+Example:
+
+```python
+x = 10
+
+x += 5     # 15
+x *= 2     # 30
+x -= 10    # 20
+
+print(x)   # 20
+```
+
+Real-world uses include updating:
+
+* Wallet/bank balances
+* Bills
+* Counters
+* Scores
+
+---
+
+# 4. Comparison Operators
+
+Compare two values and return **`True` or `False`**.
+
+| Operator | Meaning               |
+| -------- | --------------------- |
+| `==`     | Equal                 |
+| `!=`     | Not equal             |
+| `>`      | Greater than          |
+| `<`      | Less than             |
+| `>=`     | Greater than or equal |
+| `<=`     | Less than or equal    |
+
+```python
+a = 100
+b = 50
+
+print(a > b)    # True
+print(a == b)   # False
+print(a != b)   # True
+```
+
+Example:
+
+```python
+age = 20
+print(age >= 18)   # True
+```
+
+Useful for eligibility checks and validations.
+
+---
+
+# 5. Logical Operators
+
+Used to combine multiple conditions.
+
+### `and`
+
+Returns `True` only when **all conditions are True**.
+
+```python
+marks = 85
+age = 19
+
+print(marks >= 60 and age >= 18)
+# True
+```
+
+### `or`
+
+Returns `True` when **at least one condition is True**.
+
+```python
+username = "admin"
+email = "admin@gmail.com"
+
+print(username == "admin" or email == "admin@gmail.com")
+# True
+```
+
+### `not`
+
+Reverses the result.
+
+```python
+print(not (10 > 5))
+# False
+```
+
+Example:
+
+```python
+is_logged_in = False
+print(not is_logged_in)
+# True
+```
+
+### Truth Tables
+
+**AND**
+
+| A     | B     | A and B |
+| ----- | ----- | ------- |
+| True  | True  | True    |
+| True  | False | False   |
+| False | True  | False   |
+| False | False | False   |
+
+**OR**
+
+| A     | B     | A or B |
+| ----- | ----- | ------ |
+| True  | True  | True   |
+| True  | False | True   |
+| False | True  | True   |
+| False | False | False  |
+
+**NOT**
+
+| A     | not A |
+| ----- | ----- |
+| True  | False |
+| False | True  |
+
+---
+
+# 6. Bitwise Operators
+
+Bitwise operators work on the **binary representation of integers**.
+
+| Operator | Name        |    |
+| -------- | ----------- | -- |
+| `&`      | AND         |    |
+| `        | `           | OR |
+| `^`      | XOR         |    |
+| `~`      | NOT         |    |
+| `<<`     | Left Shift  |    |
+| `>>`     | Right Shift |    |
+
+Example:
+
+```text
+10 = 1010
+15 = 1111
+```
+
+### AND `&`
+
+Both corresponding bits must be `1`.
+
+```python
+10 & 15
+# 10
+```
+
+```text
+1010
+1111
+----
+1010
+```
+
+### OR `|`
+
+At least one corresponding bit must be `1`.
+
+```python
+10 | 15
+# 15
+```
+
+### XOR `^`
+
+Result is `1` when the bits are **different**.
+
+```python
+10 ^ 15
+# 5
+```
+
+### NOT `~`
+
+Flips the bits.
+
+```python
+~10
+# -11
+```
+
+Important Python rule:
+
+```text
+~x = -(x + 1)
+```
+
+So:
+
+```python
+~10
+# -11
+```
+
+### Left Shift `<<`
+
+Moves bits to the left.
+
+```python
+10 << 2
+# 40
+```
+
+Equivalent to:
+
+```text
+10 × 2² = 40
+```
+
+Useful for fast multiplication by powers of 2.
+
+### Right Shift `>>`
+
+Moves bits to the right.
+
+```python
+10 >> 2
+# 2
+```
+
+Equivalent to:
+
+```text
+10 ÷ 2² = 2
+```
+
+Useful for fast division by powers of 2.
+
+### Bitwise Truth Table
+
+| A | B | AND | OR | XOR | NOT A |
+| - | - | --- | -- | --- | ----- |
+| 0 | 0 | 0   | 0  | 0   | 1     |
+| 0 | 1 | 0   | 1  | 1   | 1     |
+| 1 | 0 | 0   | 1  | 1   | 0     |
+| 1 | 1 | 1   | 1  | 0   | 0     |
+
+Example:
+
+```python
+x = 5       # 0101
+y = 3       # 0011
+
+print(x & y)    # 1
+print(x | y)    # 7
+print(x ^ y)    # 6
+print(~x)       # -6
+print(x << 1)   # 10
+print(x >> 1)   # 2
+```
+
+Bitwise operators are commonly used in:
+
+* Networking
+* Embedded systems
+* Device drivers
+* Cryptography
+* Permissions and flags
+* Low-level/performance-oriented programming
+
+---
+
+# 7. Membership Operators
+
+Check whether an item exists inside a sequence such as a list, string, or tuple.
+
+| Operator | Meaning             |
+| -------- | ------------------- |
+| `in`     | Item is present     |
+| `not in` | Item is not present |
+
+```python
+ids = [101, 102, 103]
+
+print(101 in ids)       # True
+print(105 in ids)       # False
+print(105 not in ids)   # True
+```
+
+Example:
+
+```python
+present = ["Raju", "Harish", "Ram"]
+
+print("Raju" in present)
+# True
+```
+
+Useful for searching lists, usernames, products, etc.
+
+---
+
+# 8. Identity Operators
+
+Check whether two variables refer to the **same object in memory**.
+
+| Operator | Meaning           |
+| -------- | ----------------- |
+| `is`     | Same object       |
+| `is not` | Different objects |
+
+```python
+a = [1, 2, 3]
+b = a
+c = [1, 2, 3]
+
+print(a is b)       # True
+print(a is c)       # False
+print(a is not c)   # True
+```
+
+### `==` vs `is`
+
+```text
+==  → compares values
+is  → compares object identity
+```
+
+Example:
+
+```python
+a = [10]
+b = [10]
+
+print(a == b)   # True
+print(a is b)   # False
+```
+
+The values are equal, but they are different list objects.
+
+### Checking `None`
+
+Use:
+
+```python
+result = None
+
+if result is None:
+    print("No value")
+```
+
+Best practice:
+
+```python
+is None
+is not None
+```
+
+rather than using `== None`.
+
+---
+
+# 9. Conditional / Ternary Operator
+
+Allows a simple `if-else` decision in one line.
+
+### Syntax
+
+```python
+value_if_true if condition else value_if_false
+```
+
+Example:
+
+```python
+age = 20
+
+result = "Eligible" if age >= 18 else "Not Eligible"
+
+print(result)
+# Eligible
+```
+
+### Weekend / Weekday
+
+```python
+day = 6
+
+result = "Weekend" if day >= 6 else "Weekday"
+```
+
+### Pass / Fail
+
+```python
+marks = 75
+
+status = "Pass" if marks >= 35 else "Fail"
+```
+
+### Free Delivery
+
+```python
+cart_amount = 1200
+
+delivery = "Free Delivery" if cart_amount >= 1000 else "Delivery Charges Apply"
+```
+
+---
+
+# 10. Operator Precedence
+
+When an expression contains multiple operators, Python follows a priority order.
+
+### Highest → Lowest
+
+```text
+1.  ()
+2.  **
+3.  +x, -x, ~x
+4.  *, /, //, %
+5.  +, -
+6.  <<, >>
+7.  &
+8.  ^
+9.  |
+10. ==, !=, <, >, <=, >=,
+    is, is not, in, not in
+11. not
+12. and
+13. or
+14. Conditional expression
+```
+
+### Important
+
+Parentheses `()` have the highest priority, so use them when you want to make the order clear.
+
+---
+
+# ⭐ Quick Revision
+
+```text
+Arithmetic
++  -  *  /  //  %  **
+
+Assignment
+=  +=  -=  *=  /=  //=  %=  **=
+
+Comparison
+==  !=  >  <  >=  <=
+
+Logical
+and  or  not
+
+Bitwise
+&  |  ^  ~  <<  >>
+
+Membership
+in  not in
+
+Identity
+is  is not
+
+Conditional
+value_if_true if condition else value_if_false
+```
+
+## Important Differences
+
+```text
+/       → Division → float result
+//      → Floor division
+%       → Remainder
+**      → Power
+
+==      → Same value?
+is      → Same object?
+
+and     → All conditions True
+or      → At least one condition True
+not     → Reverses condition
+
+in      → Item exists?
+not in  → Item doesn't exist?
+
+<<      → Left shift
+>>      → Right shift
+```
+
+# Interview Points
+
+### `/` vs `//`
+
+* `/` returns the quotient as a float.
+* `//` performs floor division.
+
+```python
+10 / 3     # 3.333...
+10 // 3    # 3
+```
+
+### `%` vs `//`
+
+* `%` → returns the remainder.
+* `//` → returns the floor-divided quotient.
+
+### `==` vs `is`
+
+* `==` → compares values.
+* `is` → compares object identity.
+
+### Why `is None`?
+
+`None` is a singleton object, so Python recommends:
+
+```python
+if value is None:
+    print("No value")
+```
+
+### Real-World Uses
+
+| Operator Type | Common Uses                               |
+| ------------- | ----------------------------------------- |
+| Arithmetic    | Billing, salary, averages, calculations   |
+| Assignment    | Balances, counters, scores                |
+| Comparison    | Eligibility, validation                   |
+| Logical       | Login, filtering, admissions              |
+| Bitwise       | Networking, permissions, embedded systems |
+| Membership    | Searching lists/products/users            |
+| Identity      | Checking `None`, object identity          |
+| Ternary       | Pass/fail, discounts, weekend/weekday     |
