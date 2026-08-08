@@ -1,0 +1,86 @@
+
+#Introduction to programming and python
+1.PROGRAMMING:
+ programming is the process of writing instructions that tell a computer what to do.
+-A computer cannot understad human language directly so the human language called high level language was converted to low level language called as machine learning language or binary language 
+-Programming language acts as bridge btw humans and computers
+ex.online shopping and uber rides etc 
+2.Programming language :
+A Programming Language is a language used to communicate with computers and create 
+software applications.
+ex. python,java,c,c++ etc
+there are two types of programm paradigms
+1.Procedural Programming
+2.Object Oriented Programming
+1.procedural programming:
+-focuses on functions and procedures
+-the main focus is function logic and sequence of steps
+-everything was done in a step by step process method
+ex:c,pascal uses this
+for example we can see food ordering system where first we login select details add food to the cart then adress selection the food delivery 
+#Characterstics:
+1.function based
+2.Top to bottom approach
+Easier for Small Applications 
+● Less Code Reusability 
+● Data is less secure 
+● Difficult to manage large projects 
+#Advantages of Procedural Programming 
+● Easy to Learn 
+● Easy to Write 
+● Fast Execution 
+● Suitable for Small Programs 
+#Disadvantages of Procedural programming:
+● Difficult for Large Projects 
+● Data Security Issues 
+● Less Reusability 
+● Hard to Maintain
+#Object-Oriented Programming (OOP) 
+Object-Oriented Programming organizes code using Objects and Classes. 
+class is a blueprint or template
+object is a instance of class
+#Characteristics of OOP 
+● Class Based 
+● Object Based 
+● Encapsulation- it stores data and methods securily 
+● Inheritance-for example transforming of genetics from parents to children here we share attributes . 
+● Polymorphism -doing a task in different methods according to the requirment
+● Abstraction -Hiding the behind procedure and complexibility 
+● Reusability 
+● Security 
+#Advantages of OOP 
+● Reusable Code 
+● Better Security 
+● Easy Maintenance 
+● Easy Scalability 
+● Suitable for Large Applications 
+#Disadvantages of OOP 
+● More Memory Usage 
+● Slightly Slower Execution 
+● More Complex for Beginners 
+#python:
+it is high level, interpreted -runs line by line,general purpose  language
+easy to write ,read
+ex; name = "Neelufar"
+    print(name)
+#python was developed by guido van rossum development started at 1989 and released on 1991
+Applications
+-Django,Flask,FastAPi are used for website development and APIS 
+and used for data visualization ,Bussiness analytics etc 
+##Memory allocation:
+#procedural vs OOP
+procedural:
+stores variables and functions 
+functions are caled one after other 
+data is globally used 
+memory usage is low
+stored in a stack memory
+reusability was low 
+security is also low suitable for smaller projects
+
+#OOP emory allocation:
+-Objects are created in a heap memory
+-objects stores Attributes and methods
+-reusabilty was high 
+-suitable for larger applications
+-security is higher 
