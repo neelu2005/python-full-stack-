@@ -1,0 +1,921 @@
+# Python Day 07 — Strings
+
+## 1. What is a String?
+
+A **string** is a sequence of characters enclosed in:
+
+```python
+'Single quotes'
+"Double quotes"
+'''Triple quotes'''
+"""Triple double quotes"""
+```
+
+Example:
+
+```python
+name = "Neelufar"
+message = '''This is
+a multi-line string.'''
+
+print(name)
+print(message)
+```
+
+### Important
+
+Strings are **immutable**.
+
+This means that once a string is created, its characters cannot be changed directly.
+
+---
+
+# 2. String Operations
+
+Python supports several operations on strings.
+
+### 1. Concatenation `+`
+
+Joins strings together.
+
+```python
+first = "Hello"
+second = "World"
+
+print(first + " " + second)
+# Hello World
+```
+
+### 2. Repetition `*`
+
+Repeats a string.
+
+```python
+print("Python! " * 3)
+# Python! Python! Python!
+```
+
+### 3. Indexing
+
+Access individual characters using their index.
+
+```python
+text = "Python"
+
+print(text[0])    # P
+print(text[-1])   # n
+```
+
+Indexing starts from `0`.
+
+```text
+P  y  t  h  o  n
+0  1  2  3  4  5
+-6 -5 -4 -3 -2 -1
+```
+
+### 4. Slicing
+
+Extract a part of a string.
+
+```python
+text = "Python"
+
+print(text[0:3])   # Pyt
+print(text[:4])    # Pyth
+print(text[2:])    # thon
+```
+
+General syntax:
+
+```text
+string[start : stop : step]
+```
+
+The `stop` index is not included.
+
+### 5. Membership
+
+Check whether a substring exists.
+
+```python
+text = "Python"
+
+print("Pyt" in text)       # True
+print("Java" not in text)  # True
+```
+
+---
+
+# 3. Built-in Functions for Strings
+
+These are Python functions that can work with strings.
+
+## `len()`
+
+Returns the number of characters.
+
+```python
+text = "Hello World"
+
+print(len(text))
+# 11
+```
+
+Spaces are also counted.
+
+## `max()`
+
+Returns the character with the highest character/Unicode value.
+
+```python
+print(max("abcXYZ"))
+# c
+```
+
+## `min()`
+
+Returns the character with the lowest character/Unicode value.
+
+```python
+print(min("abcXYZ"))
+# X
+```
+
+## `sorted()`
+
+Returns the characters in sorted order as a **list**.
+
+```python
+print(sorted("python"))
+# ['h', 'n', 'o', 'p', 't', 'y']
+```
+
+## `ord()`
+
+Converts a character into its Unicode code point.
+
+```python
+print(ord('A'))
+# 65
+```
+
+## `chr()`
+
+Converts a Unicode code point into its character.
+
+```python
+print(chr(97))
+# a
+```
+
+Remember:
+
+```text
+ord() → character → number
+chr() → number → character
+```
+
+---
+
+# 4. String Methods
+
+String methods are functions called using the string object.
+
+```python
+text.upper()
+```
+
+---
+
+## A. Case Conversion Methods
+
+### `upper()`
+
+Converts all characters to uppercase.
+
+```python
+print("hello".upper())
+# HELLO
+```
+
+### `lower()`
+
+Converts all characters to lowercase.
+
+```python
+print("HELLO".lower())
+# hello
+```
+
+### `capitalize()`
+
+Capitalizes the first character.
+
+```python
+print("python".capitalize())
+# Python
+```
+
+### `title()`
+
+Capitalizes the first letter of each word.
+
+```python
+print("hello world".title())
+# Hello World
+```
+
+### `swapcase()`
+
+Converts uppercase to lowercase and lowercase to uppercase.
+
+```python
+print("PyThOn".swapcase())
+# pYtHoN
+```
+
+### `casefold()`
+
+Converts text to a more aggressive lowercase form, mainly useful for case-insensitive comparisons.
+
+```python
+print("HELLO".casefold())
+# hello
+```
+
+`casefold()` is more aggressive than `lower()` for certain Unicode characters.
+
+---
+
+# 5. Alignment & Formatting Methods
+
+## `center(width, fillchar)`
+
+Centers the string within the specified width.
+
+```python
+print("python".center(10, "*"))
+# **python**
+```
+
+## `ljust(width, fillchar)`
+
+Aligns the string to the left.
+
+```python
+print("py".ljust(5, "-"))
+# py---
+```
+
+## `rjust(width, fillchar)`
+
+Aligns the string to the right.
+
+```python
+print("py".rjust(5, "-"))
+# ---py
+```
+
+## `zfill(width)`
+
+Adds zeros to the left.
+
+```python
+print("42".zfill(5))
+# 00042
+```
+
+---
+
+# 6. Search & Find Methods
+
+## `find(sub)`
+
+Returns the first index where the substring occurs.
+
+Returns `-1` if not found.
+
+```python
+print("hello".find("l"))
+# 2
+
+print("hello".find("z"))
+# -1
+```
+
+## `rfind(sub)`
+
+Returns the index of the **last occurrence**.
+
+```python
+print("hello".rfind("l"))
+# 3
+```
+
+## `index(sub)`
+
+Similar to `find()`, but raises an error if the substring isn't found.
+
+```python
+print("hello".index("e"))
+# 1
+```
+
+## `rindex(sub)`
+
+Finds the last occurrence and raises an error if not found.
+
+```python
+print("hello".rindex("l"))
+# 3
+```
+
+### `find()` vs `index()`
+
+```text
+find()  → not found → -1
+index() → not found → ValueError
+```
+
+## `count(sub)`
+
+Counts how many times a substring appears.
+
+```python
+print("banana".count("a"))
+# 3
+```
+
+---
+
+# 7. String Testing Methods
+
+These methods return **Boolean values**: `True` or `False`.
+
+## `startswith()`
+
+Checks whether the string starts with a specific substring.
+
+```python
+print("python".startswith("py"))
+# True
+```
+
+## `endswith()`
+
+Checks whether the string ends with a specific substring.
+
+```python
+print("python".endswith("on"))
+# True
+```
+
+## `isalpha()`
+
+Returns `True` if all characters are alphabetic.
+
+```python
+print("Hello".isalpha())
+# True
+```
+
+## `isalnum()`
+
+Returns `True` if all characters are letters or numbers.
+
+```python
+print("abc123".isalnum())
+# True
+```
+
+## `islower()`
+
+Checks whether all applicable characters are lowercase.
+
+```python
+print("hello".islower())
+# True
+```
+
+## `isupper()`
+
+Checks whether all applicable characters are uppercase.
+
+```python
+print("HELLO".isupper())
+# True
+```
+
+## `isspace()`
+
+Checks whether all characters are whitespace.
+
+```python
+print(" ".isspace())
+# True
+```
+
+## `istitle()`
+
+Checks whether the string is in title case.
+
+```python
+print("Hello World".istitle())
+# True
+```
+
+## `isidentifier()`
+
+Checks whether the string is a valid Python identifier.
+
+```python
+print("variable1".isidentifier())
+# True
+```
+
+---
+
+# 8. `isdecimal()` vs `isdigit()` vs `isnumeric()`
+
+These three are important and often appear in interview questions.
+
+## `isdecimal()`
+
+Most restrictive.
+
+Checks for decimal characters.
+
+```python
+"123".isdecimal()
+# True
+```
+
+## `isdigit()`
+
+Broader than `isdecimal()` and accepts some digit-like Unicode characters.
+
+```python
+"²".isdigit()
+# True
+```
+
+## `isnumeric()`
+
+The broadest of the three. It accepts numeric Unicode characters such as some fractions and Roman numerals.
+
+```python
+"⅓".isnumeric()
+# True
+```
+
+### Quick Difference
+
+| Method        | Example | Result |
+| ------------- | ------- | ------ |
+| `isdecimal()` | `"123"` | `True` |
+| `isdigit()`   | `"²"`   | `True` |
+| `isnumeric()` | `"⅓"`   | `True` |
+
+For normal numbers:
+
+```python
+"123".isdecimal()  # True
+"123".isdigit()    # True
+"123".isnumeric()  # True
+```
+
+But:
+
+```python
+"²".isdecimal()    # False
+"²".isdigit()      # True
+"²".isnumeric()    # True
+
+"⅓".isdecimal()    # False
+"⅓".isdigit()      # False
+"⅓".isnumeric()    # True
+```
+
+### Easy Memory Trick
+
+```text
+isdecimal → decimal digits
+isdigit   → digits + some digit characters
+isnumeric → widest numeric characters
+```
+
+---
+
+# 9. Replace & Modify Methods
+
+## `replace(old, new)`
+
+Replaces occurrences of one substring with another.
+
+```python
+print("apple".replace("p", "b"))
+# abble
+```
+
+Original:
+
+```text
+apple
+```
+
+After replacement:
+
+```text
+abble
+```
+
+## `maketrans()`
+
+Creates a translation table.
+
+```python
+table = str.maketrans("aon", "%#5")
+```
+
+## `translate()`
+
+Uses a translation table to replace characters.
+
+```python
+table = str.maketrans("a", "x")
+
+print("abc".translate(table))
+# xbc
+```
+
+### Relationship
+
+```text
+maketrans()
+     ↓
+creates translation table
+     ↓
+translate()
+     ↓
+uses the table
+```
+
+---
+
+# 10. Splitting & Joining Methods
+
+## `split(sep)`
+
+Splits a string into a list.
+
+```python
+print("a,b,c".split(","))
+# ['a', 'b', 'c']
+```
+
+Without specifying a separator:
+
+```python
+text = "Python is easy"
+
+print(text.split())
+# ['Python', 'is', 'easy']
+```
+
+## `rsplit(sep, maxsplit)`
+
+Splits from the **right side**.
+
+```python
+print("a,b,c".rsplit(",", 1))
+# ['a,b', 'c']
+```
+
+## `splitlines()`
+
+Splits a string at line breaks.
+
+```python
+text = "Hello\nWorld"
+
+print(text.splitlines())
+# ['Hello', 'World']
+```
+
+## `join(iterable)`
+
+Joins multiple strings using a separator.
+
+```python
+print(" ".join(["Hello", "World"]))
+# Hello World
+```
+
+Another example:
+
+```python
+words = ["Python", "is", "easy"]
+
+print("-".join(words))
+# Python-is-easy
+```
+
+### Important
+
+`split()` → string → list
+
+`join()` → list/iterable → string
+
+---
+
+# 11. `partition()` and `rpartition()`
+
+## `partition(sep)`
+
+Splits the string into a **3-part tuple** at the first occurrence of the separator.
+
+```python
+print("apple-pie".partition("-"))
+# ('apple', '-', 'pie')
+```
+
+Result:
+
+```text
+before separator
+separator
+after separator
+```
+
+## `rpartition(sep)`
+
+Splits at the **last occurrence**.
+
+```python
+print("apple-pie".rpartition("-"))
+# ('apple', '-', 'pie')
+```
+
+### Difference
+
+```text
+partition()    → first separator
+rpartition()   → last separator
+```
+
+---
+
+# 12. Whitespace & Trimming Methods
+
+## `strip()`
+
+Removes characters from both the beginning and end.
+
+By default, it removes whitespace.
+
+```python
+print(" hello ".strip())
+# hello
+```
+
+## `lstrip()`
+
+Removes characters from the left.
+
+```python
+print("---hello".lstrip("-"))
+# hello
+```
+
+## `rstrip()`
+
+Removes characters from the right.
+
+```python
+print("hello---".rstrip("-"))
+# hello
+```
+
+### Easy Memory Trick
+
+```text
+strip()   → both sides
+lstrip()  → left
+rstrip()  → right
+```
+
+---
+
+# 13. Encoding & Decoding
+
+## `encode()`
+
+Converts a string into bytes.
+
+```python
+text = "hello"
+
+encoded = text.encode("utf-8")
+
+print(encoded)
+# b'hello'
+```
+
+## `decode()`
+
+Converts bytes back into a string.
+
+```python
+decoded = encoded.decode("utf-8")
+
+print(decoded)
+# hello
+```
+
+### Remember
+
+```text
+String
+  ↓ encode()
+Bytes
+  ↓ decode()
+String
+```
+
+UTF-8 supports Unicode text, including characters from different languages and emojis.
+
+Example:
+
+```python
+text = "Hello नमस्ते 你好 café 🙂"
+
+encoded = text.encode("utf-8")
+decoded = encoded.decode("utf-8")
+
+print(decoded)
+# Hello नमस्ते 你好 café 🙂
+```
+
+---
+
+# ⭐ Day 07 Quick Revision
+
+## String Basics
+
+```text
+String → sequence of characters
+Immutable → cannot be changed directly
+Indexing → access individual characters
+Slicing → extract part of a string
+```
+
+## String Operations
+
+```text
++       → Concatenation
+*       → Repetition
+in      → Membership
+not in  → Membership check
+[]      → Indexing
+[:]     → Slicing
+```
+
+## Built-in Functions
+
+```text
+len()     → length
+max()     → highest character
+min()     → lowest character
+sorted()  → sorted list
+ord()     → character → Unicode number
+chr()     → Unicode number → character
+```
+
+## Case Methods
+
+```text
+upper()
+lower()
+capitalize()
+title()
+swapcase()
+casefold()
+```
+
+## Alignment
+
+```text
+center()
+ljust()
+rjust()
+zfill()
+```
+
+## Search
+
+```text
+find()
+rfind()
+index()
+rindex()
+count()
+```
+
+## Testing
+
+```text
+startswith()
+endswith()
+isalpha()
+isalnum()
+islower()
+isupper()
+isspace()
+istitle()
+isidentifier()
+isdecimal()
+isdigit()
+isnumeric()
+```
+
+## Modify
+
+```text
+replace()
+maketrans()
+translate()
+```
+
+## Split & Join
+
+```text
+split()
+rsplit()
+splitlines()
+join()
+partition()
+rpartition()
+```
+
+## Whitespace
+
+```text
+strip()
+lstrip()
+rstrip()
+```
+
+## Encoding
+
+```text
+encode() → string to bytes
+decode() → bytes to string
+```
+
+---
+
+# 🔥 Important Interview Differences
+
+```text
+find() vs index()
+
+find()  → returns -1 if not found
+index() → raises ValueError
+```
+
+```text
+split() vs join()
+
+split() → string → list
+join()  → iterable → string
+```
+
+```text
+partition() vs split()
+
+partition() → returns 3-part tuple
+split()     → returns list
+```
+
+```text
+isdecimal() < isdigit() < isnumeric()
+
+isdecimal() → most restrictive
+isdigit()   → broader
+isnumeric() → broadest
+```
+
+```text
+strip()  → both sides
+lstrip() → left side
+rstrip() → right side
+```
+
+```text
+ord() → character → number
+chr() → number → character
+
+encode() → string → bytes
+decode() → bytes → string
+```
