@@ -1,0 +1,788 @@
+# Python Day 06 — Input & Output Formatting
+
+## Part 1: Input Formatting
+
+Python's `input()` function is used to take input from the user during program execution.
+
+### Important
+
+`input()` **always returns a string** by default.
+
+```python
+name = input("Enter your name: ")
+```
+
+If another data type is required, convert the input using functions such as:
+
+```text
+int()
+float()
+list()
+tuple()
+set()
+dict()
+```
+
+---
+
+## 1. String Input
+
+Used for names, emails, cities, etc.
+
+```python
+name = input("Enter your full name: ")
+print(name)
+```
+
+Example:
+
+```text
+Input: Ankit Sharma
+Output: Ankit Sharma
+```
+
+The result is of type `str`.
+
+---
+
+## 2. Integer Input
+
+Used for quantities, age, number of items, etc.
+
+```python
+quantity = int(input("Enter the number of items: "))
+print(quantity)
+```
+
+```text
+Input: 5
+Output: 5
+```
+
+`int()` converts the string input into an integer.
+
+---
+
+## 3. Float Input
+
+Used for prices, temperatures, ratings, discounts, etc.
+
+```python
+price = float(input("Enter the product price: "))
+print(price)
+```
+
+```text
+Input: 299.99
+Output: 299.99
+```
+
+---
+
+## 4. List Input — Space Separated
+
+Use `.split()` to separate values entered with spaces.
+
+```python
+names = input("Enter employee names: ").split()
+print(names)
+```
+
+Input:
+
+```text
+Ankit Ravi Sneha
+```
+
+Output:
+
+```python
+['Ankit', 'Ravi', 'Sneha']
+```
+
+The elements are strings.
+
+---
+
+## 5. List Input — Comma Separated
+
+Use `.split(',')` when values are separated by commas.
+
+```python
+tags = input("Enter tags: ").split(',')
+print(tags)
+```
+
+Input:
+
+```text
+sale,discount,new
+```
+
+Output:
+
+```python
+['sale', 'discount', 'new']
+```
+
+---
+
+## 6. List of Integers
+
+Combine `split()` with `map(int, ...)`.
+
+```python
+marks = list(map(int, input("Enter marks: ").split()))
+print(marks)
+```
+
+Input:
+
+```text
+89 76 94 82
+```
+
+Output:
+
+```python
+[89, 76, 94, 82]
+```
+
+### How it works
+
+```text
+input()
+   ↓
+"89 76 94 82"
+   ↓
+split()
+   ↓
+["89", "76", "94", "82"]
+   ↓
+map(int, ...)
+   ↓
+89, 76, 94, 82
+   ↓
+list()
+   ↓
+[89, 76, 94, 82]
+```
+
+---
+
+## 7. List of Floats
+
+```python
+weights = list(map(float, input("Enter weights: ").split()))
+print(weights)
+```
+
+Input:
+
+```text
+55.6 62.1 70.3
+```
+
+Output:
+
+```python
+[55.6, 62.1, 70.3]
+```
+
+Useful for weights, prices, sensor readings, etc.
+
+---
+
+## 8. Tuple Input
+
+Use `tuple()` with `map()`.
+
+```python
+dimensions = tuple(
+    map(int, input("Enter length, width, height: ").split())
+)
+
+print(dimensions)
+```
+
+Input:
+
+```text
+10 20 15
+```
+
+Output:
+
+```python
+(10, 20, 15)
+```
+
+Useful for coordinates and dimensions.
+
+---
+
+## 9. Set Input
+
+Useful when duplicate values need to be removed.
+
+```python
+selected_ids = set(
+    map(int, input("Enter selected image IDs: ").split())
+)
+
+print(selected_ids)
+```
+
+Input:
+
+```text
+101 102 103 101 104
+```
+
+Output:
+
+```python
+{101, 102, 103, 104}
+```
+
+The duplicate `101` is automatically removed.
+
+---
+
+## 10. Dictionary Input Using `eval()`
+
+The PDF demonstrates using `eval()` when entering structured dictionary data.
+
+```python
+profile = eval(
+    input("Enter user profile as a dictionary: ")
+)
+
+print(profile)
+```
+
+Input:
+
+```python
+{'name': 'Ravi', 'age': 30, 'role': 'admin'}
+```
+
+Output:
+
+```python
+{'name': 'Ravi', 'age': 30, 'role': 'admin'}
+```
+
+### ⚠️ Important
+
+`eval()` should only be used when the input is **trusted**, because it can execute Python expressions.
+
+---
+
+## 11. Multiple Inputs with Unpacking
+
+Multiple values can be taken in one line using `.split()`.
+
+```python
+username, password = input(
+    "Enter username and password: "
+).split()
+
+print("Username:", username)
+print("Password:", password)
+```
+
+Input:
+
+```text
+user01 mypassword123
+```
+
+Output:
+
+```text
+Username: user01
+Password: mypassword123
+```
+
+Here:
+
+```text
+username → user01
+password → mypassword123
+```
+
+---
+
+# Input Formatting — Quick Table
+
+| Input            | Code                                | Result Type   |
+| ---------------- | ----------------------------------- | ------------- |
+| String           | `input()`                           | `str`         |
+| Integer          | `int(input())`                      | `int`         |
+| Float            | `float(input())`                    | `float`       |
+| List of strings  | `input().split()`                   | `list[str]`   |
+| List of integers | `list(map(int, input().split()))`   | `list[int]`   |
+| List of floats   | `list(map(float, input().split()))` | `list[float]` |
+| Tuple            | `tuple(map(int, input().split()))`  | `tuple[int]`  |
+| Set              | `set(map(int, input().split()))`    | `set[int]`    |
+| Dictionary       | `eval(input())`                     | `dict`        |
+| Multiple values  | `a, b = input().split()`            | `str, str`    |
+
+---
+
+# Part 2: Output Formatting
+
+## Understanding `print()`
+
+`print()` is used to display text, numbers, variables, and other data on the console.
+
+### Basic Syntax
+
+```python
+print(object, ..., sep=' ', end='\n',
+      file=sys.stdout, flush=False)
+```
+
+### Main Parameters
+
+| Parameter | Purpose                                 |
+| --------- | --------------------------------------- |
+| `object`  | Data to display                         |
+| `sep`     | Separator between multiple values       |
+| `end`     | What is printed after the output        |
+| `file`    | Where output is sent                    |
+| `flush`   | Forces output to be written immediately |
+
+By default:
+
+```python
+sep = " "
+end = "\n"
+```
+
+---
+
+## 1. Basic Printing
+
+```python
+print("Hello, World!")
+```
+
+Output:
+
+```text
+Hello, World!
+```
+
+---
+
+## 2. Printing Multiple Items
+
+```python
+name = "Alice"
+age = 25
+
+print("Name:", name, "Age:", age)
+```
+
+Output:
+
+```text
+Name: Alice Age: 25
+```
+
+Python automatically inserts a space between items.
+
+---
+
+## 3. Using `sep`
+
+`sep` controls the separator between multiple values.
+
+```python
+print("2024", "02", "07", sep="-")
+```
+
+Output:
+
+```text
+2024-02-07
+```
+
+Instead of the default space, `-` is used.
+
+### Another example
+
+```python
+print("Python", "Java", "SQL", sep=" | ")
+```
+
+Output:
+
+```text
+Python | Java | SQL
+```
+
+---
+
+## 4. Using `end`
+
+By default, `print()` moves to a new line.
+
+```python
+print("Hello")
+print("World")
+```
+
+Output:
+
+```text
+Hello
+World
+```
+
+Change this using `end`:
+
+```python
+print("Hello,", end=" ")
+print("World!")
+```
+
+Output:
+
+```text
+Hello, World!
+```
+
+`end=" "` prevents the first `print()` from moving to a new line.
+
+---
+
+# Special Characters
+
+## `\n` — New Line
+
+```python
+print("Line 1\nLine 2")
+```
+
+Output:
+
+```text
+Line 1
+Line 2
+```
+
+---
+
+## `\t` — Tab
+
+```python
+print("Name:\tAlice")
+```
+
+Adds a tab space between the values.
+
+---
+
+# Output Formatting Methods
+
+Python provides several ways to format output.
+
+## 1. Using Commas
+
+The simplest method.
+
+```python
+name = "Alice"
+age = 25
+score = 95.5
+
+print("Name:", name, "Age:", age, "Score:", score)
+```
+
+Output:
+
+```text
+Name: Alice Age: 25 Score: 95.5
+```
+
+### Advantages
+
+* Simple
+* Beginner-friendly
+* Easy to understand
+
+### Limitation
+
+* Limited control over formatting
+* Not convenient for decimal precision/alignment
+
+---
+
+# 2. Modulo `%` Formatting
+
+An older C-style formatting technique.
+
+Common format specifiers:
+
+| Specifier | Meaning                     |
+| --------- | --------------------------- |
+| `%s`      | String                      |
+| `%d`      | Integer                     |
+| `%f`      | Float                       |
+| `%.2f`    | Float with 2 decimal places |
+
+Example:
+
+```python
+name = "Bob"
+age = 30
+score = 88.75
+
+print(
+    "Name: %s | Age: %d | Score: %.2f"
+    % (name, age, score)
+)
+```
+
+Output:
+
+```text
+Name: Bob | Age: 30 | Score: 88.75
+```
+
+### Advantages
+
+* Provides formatting control
+
+### Disadvantages
+
+* Older style
+* Less readable
+* Generally not recommended for new Python projects
+
+---
+
+# 3. f-Strings ⭐
+
+**f-strings (Formatted String Literals)** were introduced in Python 3.6+.
+
+They are the modern and recommended way of formatting strings.
+
+Put `f` before the string and variables inside `{}`.
+
+```python
+name = "Charlie"
+age = 28
+score = 92.389
+
+print(
+    f"Name: {name} | Age: {age} | Score: {score:.2f}"
+)
+```
+
+Output:
+
+```text
+Name: Charlie | Age: 28 | Score: 92.39
+```
+
+### Decimal Formatting
+
+```python
+{score:.2f}
+```
+
+means:
+
+```text
+.2f → display 2 digits after the decimal point
+```
+
+### Advantages
+
+* Clean
+* Readable
+* Concise
+* Modern
+* Easy to use
+
+### Requirement
+
+Works with **Python 3.6+**.
+
+---
+
+# 4. `str.format()`
+
+Uses `{}` as placeholders and `.format()` to insert values.
+
+```python
+name = "Diana"
+age = 22
+score = 89.456
+
+print(
+    "Name: {} | Age: {} | Score: {:.1f}"
+    .format(name, age, score)
+)
+```
+
+Output:
+
+```text
+Name: Diana | Age: 22 | Score: 89.5
+```
+
+### Formatting
+
+```text
+{}      → placeholder
+{:.1f}  → float with 1 decimal place
+```
+
+### Advantages
+
+* Flexible
+* Supports complex formatting
+* Works in Python 2.7+ and Python 3+
+
+### Disadvantage
+
+More verbose than f-strings.
+
+---
+
+# Output Formatting — Comparison
+
+| Method      | Version  | Advantages               | Disadvantages            |
+| ----------- | -------- | ------------------------ | ------------------------ |
+| Commas      | All      | Simple                   | Limited formatting       |
+| `%`         | All      | Basic formatting control | Old/outdated style       |
+| f-strings   | 3.6+     | Clean, readable, concise | Not available before 3.6 |
+| `.format()` | 2.7+, 3+ | Flexible                 | More verbose             |
+
+---
+
+# ⭐ Day 06 Quick Revision
+
+## Input
+
+```text
+input()
+```
+
+Always returns:
+
+```text
+str
+```
+
+Convert when necessary:
+
+```python
+int(input())
+float(input())
+input().split()
+list(map(int, input().split()))
+list(map(float, input().split()))
+tuple(map(int, input().split()))
+set(map(int, input().split()))
+```
+
+Multiple inputs:
+
+```python
+a, b = input().split()
+```
+
+Dictionary according to the PDF:
+
+```python
+eval(input())
+```
+
+⚠️ Only with trusted input.
+
+---
+
+## Output
+
+Basic:
+
+```python
+print("Hello")
+```
+
+Multiple values:
+
+```python
+print("Name:", name, "Age:", age)
+```
+
+Custom separator:
+
+```python
+print("A", "B", "C", sep="-")
+```
+
+Custom ending:
+
+```python
+print("Hello", end=" ")
+```
+
+Special characters:
+
+```text
+\n → New line
+\t → Tab
+```
+
+Formatting methods:
+
+```text
+1. Commas
+2. % formatting
+3. f-strings ⭐
+4. str.format()
+```
+
+### Most Important for Practice
+
+```python
+# Input
+name = input()
+age = int(input())
+
+# Multiple integers
+numbers = list(map(int, input().split()))
+
+# Output
+print(name, age)
+
+# f-string
+print(f"Name: {name}, Age: {age}")
+```
+
+### Easy Memory Trick
+
+```text
+INPUT
+input() → always string
+split() → separate values
+map()   → convert values
+list()  → make a list
+tuple() → make a tuple
+set()   → remove duplicates
+
+OUTPUT
+print() → display
+sep     → between items
+end     → after output
+\n      → new line
+\t      → tab
+f""     → modern formatting
+```
