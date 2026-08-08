@@ -1,0 +1,417 @@
+# Python — Type Conversion (Type Casting)
+
+## 1. What is Type Conversion?
+
+**Type conversion / type casting** means converting a value from one data type to another using built-in functions.
+
+Common functions:
+
+```python
+int()
+float()
+str()
+bool()
+list()
+tuple()
+set()
+dict()
+```
+
+Not every type can be converted directly into every other type.
+
+---
+
+# 2. Converting `int`
+
+Example:
+
+```python
+x = 2
+```
+
+| Target | Example    | Result  |
+| ------ | ---------- | ------- |
+| float  | `float(x)` | `2.0`   |
+| str    | `str(x)`   | `"2"`   |
+| bool   | `bool(x)`  | `True`  |
+| list   | `list(x)`  | ❌ Error |
+| tuple  | `tuple(x)` | ❌ Error |
+| set    | `set(x)`   | ❌ Error |
+| dict   | `dict(x)`  | ❌ Error |
+
+### Important
+
+An integer is **not iterable**, so it cannot directly become a list, tuple, set or dictionary.
+
+`bool(0)` → `False`
+`bool(non-zero)` → `True`
+
+---
+
+# 3. Converting `float`
+
+Example:
+
+```python
+x = 3.1
+```
+
+| Target | Example    | Result  |
+| ------ | ---------- | ------- |
+| int    | `int(x)`   | `3`     |
+| str    | `str(x)`   | `"3.1"` |
+| bool   | `bool(x)`  | `True`  |
+| list   | `list(x)`  | ❌ Error |
+| tuple  | `tuple(x)` | ❌ Error |
+| set    | `set(x)`   | ❌ Error |
+| dict   | `dict(x)`  | ❌ Error |
+
+### ⭐ Important
+
+```python
+int(3.9)   # 3
+int(-3.9)  # -3
+```
+
+`int()` removes the decimal part; it does **not** round the number.
+
+---
+
+# 4. Converting `str`
+
+Example:
+
+```python
+s = "power"
+```
+
+### String → Number
+
+```python
+int("10")       # 10
+float("10.8")   # 10.8
+```
+
+Only valid numeric strings can be converted.
+
+```python
+int("10.9")     # ❌ Error
+int("power")    # ❌ Error
+float("power")  # ❌ Error
+```
+
+For `"10.9"`:
+
+```python
+int(float("10.9"))   # 10
+```
+
+### String → Other Collections
+
+```python
+list("power")
+# ['p', 'o', 'w', 'e', 'r']
+
+tuple("power")
+# ('p', 'o', 'w', 'e', 'r')
+
+set("power")
+# {'p', 'o', 'w', 'e', 'r'}
+```
+
+A string is iterable, so its characters are processed individually.
+
+```python
+bool("power")   # True
+bool("")        # False
+```
+
+### String → Dictionary
+
+```python
+dict("power")
+```
+
+❌ Error — dictionary conversion requires **key-value pairs**, not individual characters.
+
+---
+
+# 5. Converting `list`
+
+Example:
+
+```python
+numbers = [1, 2, 3, 4]
+```
+
+```python
+str(numbers)
+# "[1, 2, 3, 4]"
+
+tuple(numbers)
+# (1, 2, 3, 4)
+
+set(numbers)
+# {1, 2, 3, 4}
+
+bool(numbers)
+# True
+```
+
+These are invalid:
+
+```python
+int(numbers)      # ❌
+float(numbers)    # ❌
+dict(numbers)     # ❌
+```
+
+### Why `dict()` fails?
+
+A list must contain **key-value pairs** to become a dictionary.
+
+---
+
+# 6. Converting `tuple`
+
+Example:
+
+```python
+t = (1, 2, 3, 4)
+```
+
+```python
+str(t)
+# "(1, 2, 3, 4)"
+
+list(t)
+# [1, 2, 3, 4]
+
+set(t)
+# {1, 2, 3, 4}
+
+bool(t)
+# True
+```
+
+These are invalid:
+
+```python
+int(t)       # ❌
+float(t)     # ❌
+dict(t)      # ❌
+```
+
+For `dict()`, the tuple must contain key-value pairs.
+
+---
+
+# 7. Converting `set`
+
+Example:
+
+```python
+s = {3, 4, 5, 6}
+```
+
+```python
+str(s)
+# "{3, 4, 5, 6}"
+
+list(s)
+# [3, 4, 5, 6]
+
+tuple(s)
+# (3, 4, 5, 6)
+
+bool(s)
+# True
+```
+
+### ⚠️ Important
+
+Set order is **not guaranteed**, so the order may vary when converting it to a list or tuple.
+
+Invalid:
+
+```python
+int(s)      # ❌
+float(s)    # ❌
+dict(s)     # ❌ unless elements are valid key-value pairs
+```
+
+---
+
+# 8. Converting `dict`
+
+Example:
+
+```python
+d = {1: 1, 2: 4, 3: 9}
+```
+
+### Dictionary → String
+
+```python
+str(d)
+# "{1: 1, 2: 4, 3: 9}"
+```
+
+### Dictionary → Boolean
+
+```python
+bool(d)
+# True
+```
+
+### Dictionary → List / Tuple / Set
+
+```python
+list(d)
+# [1, 2, 3]
+
+tuple(d)
+# (1, 2, 3)
+
+set(d)
+# {1, 2, 3}
+```
+
+### ⭐ Important
+
+When converting a dictionary to `list`, `tuple`, or `set`, **only the keys are converted**.
+
+Invalid:
+
+```python
+int(d)      # ❌
+float(d)    # ❌
+```
+
+---
+
+# 9. Converting `bool`
+
+Boolean values:
+
+```python
+True
+False
+```
+
+### Boolean → int
+
+```python
+int(False)   # 0
+int(True)    # 1
+```
+
+### Boolean → float
+
+```python
+float(False)   # 0.0
+float(True)    # 1.0
+```
+
+### Boolean → string
+
+```python
+str(False)   # "False"
+str(True)    # "True"
+```
+
+These are invalid because `bool` is not iterable:
+
+```python
+list(False)    # ❌
+tuple(False)   # ❌
+set(False)     # ❌
+dict(False)    # ❌
+```
+
+---
+
+# 10. Dictionary Conversion ⭐
+
+To convert a list/tuple into a dictionary, the elements must be **2-item key-value pairs**.
+
+Example:
+
+```python
+data = [
+    ("name", "Teja"),
+    ("batch", "22"),
+    ("subject", "Python")
+]
+
+result = dict(data)
+
+print(result)
+```
+
+Output:
+
+```python
+{'name': 'Teja', 'batch': '22', 'subject': 'Python'}
+```
+
+### Remember
+
+```python
+dict([
+    ("name", "Teja"),
+    ("age", 22)
+])
+```
+
+✅ Valid because every element contains:
+
+```text
+key + value
+```
+
+But:
+
+```python
+dict([1, 2, 3])
+```
+
+❌ Invalid because the elements are not key-value pairs.
+
+---
+
+# ⭐ Type Conversion Cheat Sheet
+
+| From    | Common Valid Conversions                       |
+| ------- | ---------------------------------------------- |
+| `int`   | `float`, `str`, `bool`                         |
+| `float` | `int`, `str`, `bool`                           |
+| `str`   | `int`, `float`, `bool`, `list`, `tuple`, `set` |
+| `list`  | `str`, `bool`, `tuple`, `set`, `dict*`         |
+| `tuple` | `str`, `bool`, `list`, `set`, `dict*`          |
+| `set`   | `str`, `bool`, `list`, `tuple`, `dict*`        |
+| `dict`  | `str`, `bool`, `list`, `tuple`, `set`          |
+| `bool`  | `int`, `float`, `str`                          |
+
+`dict*` works only when the source contains valid **key-value pairs**.
+
+---
+
+# 🔥 Important Exam/Interview Points
+
+1. `int(3.9)` → `3` (**truncates**, doesn't round)
+2. `bool(0)` → `False`
+3. `bool(non-zero number)` → `True`
+4. `bool("")` → `False`
+5. `bool("False")` → `True` because the string is non-empty
+6. `list("Python")` → individual characters
+7. `tuple("Python")` → individual characters
+8. `set("Python")` → unique characters
+9. `list(dictionary)` → **keys only**
+10. `tuple(dictionary)` → **keys only**
+11. `set(dictionary)` → **keys only**
+12. `int("10")` → `10`
+13. `int("10.5")` → ❌ Error
+14. `int(float("10.5"))` → `10`
+15. `dict()` requires iterable **key-value pairs**
+16. `int`, `float`, and `bool` are not iterable, so `list()`, `tuple()`, `set()`, and `dict()` cannot directly convert them.
