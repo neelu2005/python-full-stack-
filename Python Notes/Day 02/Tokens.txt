@@ -1,0 +1,267 @@
+# Python Day 02 — Python Basics
+
+## 1. Python Program & Execution
+
+A Python program is written in a `.py` file.
+
+**Execution flow:**
+
+`Source Code (.py) → Bytecode (.pyc) → PVM → Machine Instructions → Output`
+
+* **Bytecode:** Intermediate code generated from Python source code.
+* **PVM (Python Virtual Machine):** Executes the bytecode.
+
+Example:
+
+```python
+print("Hello World")
+```
+
+## 2. Python Execution Modes
+
+### Interactive Mode
+
+Executes one statement at a time.
+
+```python
+>>> print("Hello")
+Hello
+>>> 10 + 20
+30
+```
+
+Useful for learning, testing, debugging and quick calculations.
+
+### Script Mode
+
+Code is written in a `.py` file and executed together.
+
+```python
+# example.py
+a = 10
+b = 20
+print(a + b)
+```
+
+Run using:
+
+```bash
+python example.py
+```
+
+Useful for projects and larger programs.
+
+## 3. Tokens
+
+A **token** is the smallest meaningful unit of Python code.
+
+Python has 5 main types:
+
+1. **Keywords** — Reserved words
+   `if`, `else`, `for`, `while`, `def`, `class`
+
+2. **Identifiers** — Names given to variables, functions, classes, etc.
+   `student_name`, `age`, `calculate_sum`
+
+3. **Literals** — Fixed values
+   `10`, `3.14`, `"Python"`, `True`
+
+4. **Operators** — Perform operations
+   `+`, `-`, `*`, `/`, `==`, `and`, `or`
+
+5. **Delimiters / Punctuators** — Separate or group code
+   `()`, `[]`, `{}`, `,`, `:`, `.`
+
+Example:
+
+```python
+a = 10
+```
+
+Tokens: `a`, `=`, `10`
+
+## 4. Statements
+
+A **statement** is an instruction executed by Python.
+
+```python
+x = 10
+print(x)
+```
+
+Each performs an action, so each is a statement.
+
+## 5. Variables
+
+A variable is a **name that refers to an object/value**.
+
+```python
+age = 24
+name = "Python"
+```
+
+Python automatically creates the object when a value is assigned.
+
+### Multiple Assignment
+
+```python
+a, b, c = 10, 20, 30
+```
+
+### Same Value to Multiple Variables
+
+```python
+x = y = z = 100
+```
+
+### Reassignment
+
+A variable can refer to a new value:
+
+```python
+x = 10
+x = 100
+```
+
+### Swapping
+
+```python
+a = 10
+b = 20
+a, b = b, a
+```
+
+Output:
+
+```text
+20 10
+```
+
+### Deleting a Variable
+
+```python
+x = 10
+del x
+```
+
+After deletion, using `x` causes a `NameError`.
+
+## 6. Mutable & Immutable Objects
+
+### Mutable
+
+Objects whose contents can be changed after creation.
+
+Examples:
+
+* `list`
+* `dict`
+* `set`
+* `bytearray`
+
+```python
+numbers = [10, 20]
+numbers.append(30)
+```
+
+### Immutable
+
+Objects that cannot be changed after creation.
+
+Examples:
+
+* `int`
+* `float`
+* `complex`
+* `bool`
+* `str`
+* `tuple`
+* `bytes`
+* `frozenset`
+
+## 7. Variable Naming Rules
+
+✅ Must begin with:
+
+* Letter (`A-Z`, `a-z`)
+* Underscore (`_`)
+
+✅ After the first character, you can use:
+
+* Letters
+* Digits
+* Underscores
+
+❌ Cannot start with a digit:
+
+```python
+2age = 20
+```
+
+❌ Cannot use keywords:
+
+```python
+if = 10
+```
+
+❌ Spaces are not allowed:
+
+```python
+my age = 20
+```
+
+✅ Use:
+
+```python
+my_age = 20
+```
+
+### Case Sensitive
+
+These are different variables:
+
+```python
+age = 20
+Age = 30
+AGE = 40
+```
+
+### Use Meaningful Names
+
+Good:
+
+```python
+student_name
+total_marks
+salary
+```
+
+Avoid meaningless names such as `x`, `a`, `temp1` unless appropriate for small examples or loops.
+
+## 8. Important Keywords
+
+Examples:
+
+`True`, `False`, `None`, `if`, `else`, `elif`, `for`, `while`, `break`, `continue`, `def`, `return`, `import`, `class`, `try`, `except`, `and`, `or`, `not`, `in`, `is`, `pass`, `raise`, `lambda`
+
+To view all keywords:
+
+```python
+import keyword
+print(keyword.kwlist)
+```
+
+## Quick Revision
+
+**Program** → `.py` file containing Python instructions
+**Bytecode** → Intermediate `.pyc` code
+**PVM** → Executes bytecode
+**Interactive Mode** → One statement at a time
+**Script Mode** → Complete `.py` program
+**Token** → Smallest meaningful code unit
+**Statement** → Executable instruction
+**Variable** → Name referring to an object
+**Mutable** → Can be changed
+**Immutable** → Cannot be changed
+**Keyword** → Reserved Python word
+**Identifier** → Programmer-defined name
