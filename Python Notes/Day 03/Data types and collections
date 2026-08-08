@@ -1,0 +1,326 @@
+# Python Day 03 — Comments, Data Types & Collections
+
+## 1. Comments
+
+Comments are ignored by the Python interpreter and are used to explain code, improve readability, add notes, or temporarily disable code.
+
+### Single-Line Comment
+
+Uses `#`
+
+```python
+# This is a comment
+print("Hello")
+```
+
+### Multi-Line Text / Documentation
+
+Python has no special multi-line comment syntax. Triple quotes are commonly used for multi-line text or **docstrings**.
+
+```python
+"""
+This is multi-line text.
+"""
+```
+
+> Triple-quoted text is technically a string literal; when placed inside a module, function, or class for documentation, it becomes a docstring.
+
+---
+
+## 2. Swapping Variables
+
+Swapping means exchanging two variable values.
+
+### Method 1 — Third Variable
+
+```python
+temp = a
+a = b
+b = temp
+```
+
+### Method 2 — Arithmetic
+
+```python
+a = a + b
+b = a - b
+a = a - b
+```
+
+### Method 3 — Pythonic Way ⭐ Recommended
+
+```python
+a, b = b, a
+```
+
+Example:
+
+```python
+a = 10
+b = 20
+a, b = b, a
+print(a, b)
+# 20 10
+```
+
+## The Pythonic method is the recommended approach.
+
+## 3. Variables
+
+A variable is a **name that refers to an object/value**.
+
+```python
+age = 22
+name = "Harish"
+percentage = 95.5
+```
+
+Python automatically determines the data type from the assigned value.
+
+---
+
+# 4. Python Data Types
+
+Main built-in types:
+
+| Category | Types                     |
+| -------- | ------------------------- |
+| Text     | `str`                     |
+| Numeric  | `int`, `float`, `complex` |
+| Sequence | `list`, `tuple`, `range`  |
+| Mapping  | `dict`                    |
+| Set      | `set`, `frozenset`        |
+| Boolean  | `bool`                    |
+| None     | `NoneType`                |
+
+## 5. String — `str`
+
+A string is a sequence of characters inside quotes.
+
+```python
+name = "Python"
+```
+
+Properties:
+
+* Stores text
+* **Immutable**
+* Ordered
+* Supports indexing
+
+```python
+name = "Python"
+print(name[0])   # P
+```
+
+---
+
+## 6. Numeric Types
+
+### `int`
+
+Whole numbers:
+
+```python
+age = 23
+temperature = -10
+```
+
+### `float`
+
+Decimal numbers:
+
+```python
+price = 199.99
+```
+
+### `complex`
+
+Contains real + imaginary parts.
+
+Python uses `j` for the imaginary part:
+
+```python
+z = 4 + 5j
+
+print(z.real)   # 4.0
+print(z.imag)   # 5.0
+```
+
+---
+
+# 7. Sequence Types
+
+Python sequence types covered:
+
+* `list`
+* `tuple`
+* `range`
+
+## List
+
+A list stores multiple values using `[]`.
+
+```python
+cart = ["Shoes", "Shirt", "Watch"]
+```
+
+### Indexing
+
+Index starts from **0**:
+
+```text
+Shoes → 0
+Shirt → 1
+Watch → 2
+```
+
+```python
+print(cart[0])   # Shoes
+```
+
+### List Properties
+
+* Ordered
+* Mutable
+* Indexed
+* Allows duplicates
+* Can contain different data types
+
+```python
+numbers = [10, 20, 30]
+numbers.append(40)
+```
+
+---
+
+# 8. Tuple
+
+A tuple is an ordered collection using `()`.
+
+```python
+colors = ("Red", "Blue", "Green")
+```
+
+Properties:
+
+* Ordered
+* Indexed
+* **Immutable**
+* Allows duplicates
+
+```python
+print(colors[1])   # Blue
+```
+
+### ⭐ Single-Element Tuple
+
+This is **NOT** a tuple:
+
+```python
+x = (5)
+```
+
+This **IS** a tuple:
+
+```python
+x = (5,)
+```
+
+The **comma creates the tuple**, not the parentheses.
+
+```python
+type((5))    # int
+type((5,))   # tuple
+```
+
+### List vs Tuple
+
+| List            | Tuple              |
+| --------------- | ------------------ |
+| `[]`            | `()`               |
+| Mutable         | Immutable          |
+| Can be modified | Cannot be modified |
+| Slower          | Faster             |
+
+---
+
+# 9. Range
+
+`range()` generates a sequence of numbers and is commonly used with loops.
+
+### One Argument
+
+```python
+range(5)
+```
+
+Produces:
+
+```text
+0 1 2 3 4
+```
+
+### Two Arguments
+
+```python
+range(2, 8)
+```
+
+Produces:
+
+```text
+2 3 4 5 6 7
+```
+
+### Three Arguments
+
+```python
+range(0, 10, 2)
+```
+
+Produces:
+
+```text
+0 2 4 6 8
+```
+
+**Important:** The `stop` value is not included.
+
+```python
+print(list(range(5)))
+# [0, 1, 2, 3, 4]
+```
+
+---
+
+# 10. Checking Data Types
+
+Use the built-in `type()` function:
+
+```python
+name = "Raju"
+age = 23
+marks = 97.5
+
+print(type(name))   # str
+print(type(age))    # int
+print(type(marks))  # float
+```
+
+---
+
+## ⭐ Day 03 Quick Revision
+
+* **Comment:** Text ignored by interpreter
+* **Swap:** `a, b = b, a`
+* **str:** Text, immutable
+* **int:** Whole numbers
+* **float:** Decimal numbers
+* **complex:** Real + imaginary numbers
+* **list:** Ordered, mutable, `[]`
+* **tuple:** Ordered, immutable, `()`
+* **range:** Generates number sequences
+* **Indexing:** Starts from `0`
+* **Single tuple:** Requires a comma → `(5,)`
+* **type():** Checks data type
