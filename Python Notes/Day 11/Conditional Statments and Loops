@@ -1,0 +1,366 @@
+# Python — Conditional Statements & Loops
+
+## 1. Control Flow
+
+**Control flow** = controls the order in which a program executes.
+
+It helps to:
+
+* Make decisions
+* Repeat tasks
+* Skip operations
+* Control execution
+
+### Main Types
+
+1. **Conditional Statements** → make decisions
+2. **Looping Statements** → repeat code
+3. **Jump Statements** → change normal loop flow
+
+---
+
+# 2. Conditional Statements
+
+Used to execute code based on a condition.
+
+A condition gives:
+
+**True / False**
+
+### Types
+
+* `if`
+* `if-else`
+* `if-elif-else`
+* Nested `if`
+
+---
+
+## 3. `if`
+
+Executes a block **only when the condition is True**.
+
+**False → block is skipped.**
+
+---
+
+## 4. `if-else`
+
+Provides **two paths**:
+
+* True → `if`
+* False → `else`
+
+Only one block executes.
+
+---
+
+## 5. `if-elif-else`
+
+Used for **multiple conditions**.
+
+Python checks conditions **top to bottom**.
+
+➡️ First True condition executes.
+➡️ Remaining conditions are skipped.
+➡️ If all are False → `else` executes.
+
+---
+
+## 6. Nested `if`
+
+An `if` inside another `if`/`else`.
+
+Used for **multiple levels of checking**.
+
+**Outer condition → Inner condition → Final decision**
+
+The inner condition is checked only when execution reaches it.
+
+---
+
+# 7. Comparison Operators
+
+Used to create conditions.
+
+| Operator | Meaning            |
+| -------- | ------------------ |
+| `>`      | Greater than       |
+| `<`      | Less than          |
+| `>=`     | Greater than/equal |
+| `<=`     | Less than/equal    |
+| `==`     | Equal              |
+| `!=`     | Not equal          |
+
+---
+
+# 8. Logical Operators
+
+Used to combine conditions.
+
+* **`and`** → all conditions must be True
+* **`or`** → at least one condition must be True
+* **`not`** → reverses True/False
+
+---
+
+# 9. Loops
+
+A **loop** repeatedly executes a block of code.
+
+### Why loops?
+
+* Avoid repetition
+* Reduce code
+* Save time
+* Automate repeated tasks
+* Improve readability
+
+### Python has two main loops:
+
+1. **`for`**
+2. **`while`**
+
+---
+
+# 10. `for` Loop
+
+Used to **iterate through an iterable**.
+
+### Common Iterables
+
+* List
+* Tuple
+* String
+* Set
+* Dictionary
+* Range
+
+### Basic Flow
+
+**Iterable → Next value → Execute → Next value → Repeat → Stop**
+
+---
+
+# 11. Iterable
+
+An **iterable** is an object whose elements can be accessed one by one.
+
+Examples:
+
+**List, Tuple, String, Set, Dictionary, Range**
+
+---
+
+# 12. Iterator
+
+An **iterator** produces values **one at a time** and remembers its current position.
+
+### Remember
+
+**Iterable → can be iterated**
+
+**Iterator → produces next value**
+
+---
+
+# 13. `iter()`
+
+`iter()` obtains an **iterator from an iterable**.
+
+**Iterable → `iter()` → Iterator**
+
+---
+
+# 14. `next()`
+
+`next()` gets the **next value from an iterator**.
+
+Every call moves the iterator forward.
+
+---
+
+# 15. `StopIteration`
+
+When an iterator has **no more values**, Python raises:
+
+**`StopIteration`**
+
+It means:
+
+➡️ **Iteration is finished.**
+
+A normal `for` loop handles this automatically.
+
+---
+
+# 16. How `for` Works Internally
+
+A `for` loop conceptually does:
+
+**Iterable → `iter()` → Iterator → `next()` → Value → Loop body → Repeat**
+
+When there are no more values:
+
+**`StopIteration` → Loop stops**
+
+---
+
+# 17. `range()`
+
+`range()` creates a **range object representing a sequence of numbers**.
+
+It mainly uses:
+
+* **Start**
+* **Stop**
+* **Step**
+
+### Important
+
+**Stop value is NOT included.**
+
+---
+
+# 18. `range()` Rules
+
+### Start
+
+Where the sequence begins.
+
+### Stop
+
+Where the sequence ends.
+
+⚠️ Stop is **excluded**.
+
+### Step
+
+Controls how much the value changes.
+
+### Default Values
+
+* Default start → `0`
+* Default step → `1`
+
+---
+
+# 19. Positive Step
+
+Positive step moves **forward**.
+
+**Start → Stop**
+
+---
+
+# 20. Negative Step
+
+Negative step moves **backward**.
+
+**Start ← Stop**
+
+Useful for reverse sequences.
+
+---
+
+# 21. `for` + `if`
+
+They can be combined.
+
+**`for` → controls repetition**
+
+**`if` → controls selection**
+
+Flow:
+
+**Repeat → Check condition → True: perform action → False: skip → Continue**
+
+---
+
+# 22. Indentation
+
+Python uses **indentation to define blocks**.
+
+Indentation determines whether a statement belongs to:
+
+* `if`
+* `elif`
+* `else`
+* `for`
+* `while`
+* Nested blocks
+
+### Important
+
+Indentation can change **how many times a statement executes**.
+
+---
+
+# 23. `if` Inside `for`
+
+When `if` is inside a `for` loop:
+
+1. Get next value
+2. Check condition
+3. True → execute `if` block
+4. False → skip `if` block
+5. Continue to next value
+
+**`for` = repetition**
+
+**`if` = selection**
+
+---
+
+# 24. Inside vs Outside `if`
+
+A statement **inside `if`** executes only when the condition is True.
+
+A statement **outside `if` but inside the loop** executes on every loop iteration.
+
+This is an important **indentation concept**.
+
+---
+
+# ⭐ Quick Revision
+
+```text
+CONTROL FLOW
+│
+├── Conditional
+│   ├── if
+│   ├── if-else
+│   ├── if-elif-else
+│   └── Nested if
+│
+├── Loops
+│   ├── for
+│   └── while
+│
+└── Jump Statements
+```
+
+### Must Remember
+
+* Condition → **True / False**
+* `if` → one condition
+* `if-else` → two paths
+* `if-elif-else` → multiple conditions
+* Nested `if` → multiple-level checking
+* `for` → iterates through iterable
+* `while` → repeats while condition is True
+* Iterable → can be iterated
+* Iterator → gives values one by one
+* `iter()` → gets iterator
+* `next()` → gets next value
+* `StopIteration` → iterator finished
+* `range()` → creates range sequence
+* `range()` stop → **excluded**
+* Positive step → forward
+* Negative step → backward
+* `for` → repetition
+* `if` → selection
+* Indentation → defines blocks
+* `and` → all True
+* `or` → any True
+* `not` → reverses result
