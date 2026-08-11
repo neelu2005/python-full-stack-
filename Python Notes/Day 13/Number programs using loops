@@ -1,0 +1,42 @@
+#reverse a number
+what is reversing a number?
+reversing a number means changing the order of the digits.
+ex:original number:123
+reverse:321
+#Modulas operator
+% gives the remainder
+123%10
+output: 3
+// floor division
+gives quoitient with decimal part
+example:
+123//10
+output:12
+n % 10   → gets last digit
+n // 10  → removes last digit
+
+2.check wheather a number is palindrome:
+a palindrome number reads the same from left to right and right to left
+
+Factors of a Number
+What is a Factor?
+A factor is a number that divides another number without leaving a remainder
+
+Count Number of Factors
+Instead of printing factors, we can count them.
+
+Factorial of a Number
+What is Factorial?
+Factorial means multiplying a number by all positive numbers below it.
+
+Armstrong Number
+What is an Armstrong Number?
+For a 3-digit number, if the sum of the cubes of its digits is equal to the original number, it is an Armstrong number.
+
+continue Statement
+The continue statement is used to skip the current iteration and move to the next iteration of the loop.
+
+10. break vs continue
+This is very important for beginners.
+continue
+Skips the current iteration.
