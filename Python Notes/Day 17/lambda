@@ -1,0 +1,350 @@
+'''Python Lambda Functions & Call by Object Reference
+Topics Covered
+Lambda Functions
+Lambda Function Syntax
+sorted() with Lambda
+Sorting Tuples using Lambda
+Sorting in Ascending Order
+Sorting in Descending Order
+Sorting by Name
+Sorting Dictionaries using Lambda
+Sorting Strings by Length
+key=lambda
+Call by Object Reference
+Call by Sharing
+Mutable vs Immutable Objects
+Object Modification vs Reassignment'''
+
+#Lambda Functions
+#A lambda function is a small anonymous function created using the lambda keyword.
+
+#Syntax
+lambda arguments: expression
+#Example
+square = lambda x: x * x
+print(square(5))
+
+'''Output:25
+Lambda provides a concise way to write simple functions.'''
+
+'''sorted() with Lambda
+Lambda functions are especially useful with sorted() when we want to specify which value should be used for sorting.'''
+
+#Sort Tuples by Marks
+students = [
+    ("Rahul", 80),
+    ("Anil", 95),
+    ("Kiran", 70),
+    ("Suresh", 85)
+]
+result = sorted(students, key=lambda x: x[1])
+print(result)
+'''Output:[('Kiran', 70), ('Rahul', 80), ('Suresh', 85), ('Anil', 95)]
+Here:
+key=lambda x: x[1]'''
+
+#means Python takes the second value from each tuple and uses it for sorting.
+
+#Sort in Descending Order
+
+#Use reverse=True.
+students = [
+    ("Rahul", 80),
+    ("Anil", 95),
+    ("Kiran", 70),
+    ("Suresh", 85)
+]
+result = sorted(
+    students,
+    key=lambda x: x[1],
+    reverse=True
+)
+print(result)
+
+#Output: [('Anil', 95), ('Suresh', 85), ('Rahul', 80), ('Kiran', 70)]
+
+#Sort by Name
+students = [
+    ("Rahul", 80),
+    ("Anil", 95),
+    ("Kiran", 70),
+    ("Suresh", 85)
+]
+result = sorted(students, key=lambda x: x[0])
+print(result)
+
+'''Output:[('Anil', 95), ('Kiran', 70), ('Rahul', 80), ('Suresh', 85)]
+Here:
+lambda x: x[0]'''
+
+#selects the first value of each tuple.
+
+#Sorting a List of Dictionaries
+#Lambda can also be used to sort dictionaries based on a particular key.
+
+students = [
+    {"name": "Rahul", "marks": 80},
+    {"name": "Anil", "marks": 95},
+    {"name": "Kiran", "marks": 70},
+    {"name": "Suresh", "marks": 85}
+]
+result = sorted(students, key=lambda x: x["marks"])
+print(result)
+
+'''Output:
+
+[
+    {'name': 'Kiran', 'marks': 70},
+    {'name': 'Rahul', 'marks': 80},
+    {'name': 'Suresh', 'marks': 85},
+    {'name': 'Anil', 'marks': 95}
+]'''
+
+'''Here:
+
+lambda x: x["marks"]
+
+means:'''
+
+'''Take each dictionary
+       ↓Get the "marks" value
+       ↓Use it as the sorting key'''
+
+#Sorting Dictionaries in Descending Order
+result = sorted(
+    students,
+    key=lambda x: x["marks"],
+    reverse=True
+)
+
+
+print(result)
+
+'''Output:
+
+[
+    {'name': 'Anil', 'marks': 95},
+    {'name': 'Suresh', 'marks': 85},
+    {'name': 'Rahul', 'marks': 80},
+    {'name': 'Kiran', 'marks': 70}
+]'''
+
+#Sort Strings by Length
+names = ["Ravi", "Alexander", "John", "Sai"]
+result = sorted(names, key=lambda x: len(x))
+print(result)
+
+#Output:['Sai', 'Ravi', 'John', 'Alexander']
+
+#For descending order:
+result = sorted(names, key=lambda x: len(x), reverse=True)
+print(result)
+
+#Output:['Alexander', 'Ravi', 'John', 'Sai']
+
+#Important key=lambda Pattern
+#These are the three important patterns from the notes:
+
+'''Tuple
+sorted(students, key=lambda x: x[1])
+Dictionary
+sorted(students, key=lambda x: x["marks"])
+String Length
+sorted(names, key=lambda x: len(x))
+Main idea
+lambda tells sorted() what value to use for comparison.'''
+
+'''Call by Object Reference / Call by Sharing
+Python uses call by object reference, also called call by sharing.
+When an object is passed to a function, the function receives a reference to the same object.'''
+
+#Example
+def change(numbers):
+    numbers.append(100)
+my_list = [10, 20, 30]
+change(my_list)
+print(my_list)
+
+#Output:[10, 20, 30, 100]
+
+#Both my_list and numbers refer to the same list object. Therefore, modifying the list inside the function is visible outside.
+
+#Modification vs Reassignment
+
+'''This is the most important part.
+Modifying the Object'''
+def change(x):
+    x.append(100)
+numbers = [10, 20]
+change(numbers)
+print(numbers)
+
+#Output:[10, 20, 100]
+
+
+'''The existing object was modified.
+Reassigning the Parameter'''
+def change(x):
+    x = 100
+number = 10
+change(number)
+print(number)
+
+#Output:10
+
+'''Here, x is simply made to refer to another object. The original variable is not changed.
+
+Easy Rule
+MODIFY object
+    ↓
+Change can be visible outside'''
+
+
+'''REASSIGN parameter
+    ↓
+Original variable is not changed
+
+11. Mutable vs Immutable
+Immutable
+int
+float
+str
+tuple'''
+
+'''These objects cannot be modified in place.
+
+Mutable
+list
+dict
+set'''
+
+'''These objects can be modified in place.
+GitHub README — Ready to Copy'''
+# Day 15 — Python Lambda Functions & Call by Object Reference
+
+
+## Topics Covered
+
+
+'''Lambda Functions
+- Lambda Function Syntax
+- sorted() with Lambda
+- Sorting Tuples
+- Sorting Dictionaries
+- Sorting Strings by Length
+- key=lambda
+- reverse=True
+- Call by Object Reference
+- Call by Sharing
+- Mutable and Immutable Objects
+- Modification vs Reassignment'''
+#Lambda Functions:
+# a lambda is a small anonymous function.
+### Syntax
+#lambda arguments: expression
+### Example
+#python '''
+
+square = lambda x: x * x
+print(square(5))
+
+#Output:25
+
+#Sorting Tuples Using Lambda
+students = [
+    ("Rahul", 80),
+    ("Anil", 95),
+    ("Kiran", 70),
+    ("Suresh", 85)
+]
+result = sorted(students, key=lambda x: x[1])
+print(result)
+
+#Output:[('Kiran', 70), ('Rahul', 80), ('Suresh', 85), ('Anil', 95)]
+
+#Here lambda x: x[1] selects the marks for sorting.
+
+#Sorting in Descending Order
+result = sorted(
+    students,
+    key=lambda x: x[1],
+    reverse=True
+)
+print(result)
+
+#Sorting by Name
+result = sorted(students, key=lambda x: x[0])
+print(result)
+
+#Sorting Dictionaries
+students = [
+    {"name": "Rahul", "marks": 80},
+    {"name": "Anil", "marks": 95},
+    {"name": "Kiran", "marks": 70},
+    {"name": "Suresh", "marks": 85}
+]
+result = sorted(students, key=lambda x: x["marks"])
+print(result)
+
+# Sorting Strings by Length
+names = ["Ravi", "Alexander", "John", "Sai"]
+result = sorted(names, key=lambda x: len(x))
+print(result)
+
+#Output:['Sai', 'Ravi', 'John', 'Alexander']
+
+'''Call by Object Reference
+
+Python uses call by object reference, also called call by sharing.'''
+
+def change(numbers):
+    numbers.append(100)
+my_list = [10, 20, 30]
+change(my_list)
+print(my_list)
+
+#Output:[10, 20, 30, 100]
+
+#The function and original variable refer to the same list object.
+
+#Modification vs Reassignment
+#Modification
+def change(x):
+    x.append(100)
+numbers = [10, 20]
+change(numbers)
+print(numbers)
+
+#Output:[10, 20, 100]
+
+#Reassignment
+def change(x):
+    x = 100
+number = 10
+change(number)
+print(number)
+
+#Output:10
+
+#Mutable vs Immutable
+'''Immutable
+int
+float
+str
+tuple
+Mutable
+list
+dict
+set'''
+'''Key Takeaways
+Lambda functions are useful for short anonymous functions.
+sorted() can use lambda through the key parameter.
+key=lambda tells Python which value to use for comparison.
+reverse=True sorts in descending order.
+Lambda can be used to sort tuples, dictionaries, and strings.
+Python uses call by object reference (call by sharing).
+Modifying a mutable object can affect the original object.
+Reassigning a function parameter does not change the original variable.
+Lists, dictionaries, and sets are mutable.
+Integers, floats, strings, and tuples are immutable.'''
+
