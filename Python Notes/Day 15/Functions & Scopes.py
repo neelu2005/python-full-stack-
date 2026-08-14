@@ -281,16 +281,11 @@ def calculate_average(total):
     return total / 3
 
 
-
-
 def check_result(average):
     if average >= 40:
         return "Pass"
     else:
         return "Fail"
-
-
-
 
 marks1 = 80
 marks2 = 70
