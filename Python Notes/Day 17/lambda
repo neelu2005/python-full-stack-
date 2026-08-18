@@ -19,7 +19,7 @@ Object Modification vs Reassignment'''
 #A lambda function is a small anonymous function created using the lambda keyword.
 
 #Syntax
-lambda arguments: expression
+#lambda arguments: expression
 #Example
 square = lambda x: x * x
 print(square(5))
